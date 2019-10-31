@@ -1,12 +1,30 @@
 Particle[] parts;
 void setup()
 {
+  frameRate(20);
   size(600, 600);
   background(0);
   parts = new Particle[1000];
   for(int i = 0; i < parts.length; i++){
      parts[i] = new Particle();
      parts[0] = new OddballParticle();
+  }
+  
+}
+
+void keyPressed()
+{
+  if(key == 'c'){
+    background(0);
+    noLoop();
+  } else if(key == 'b'){
+    redraw();
+    loop();
+    parts = new Particle[1000];
+    for(int i = 0; i < parts.length; i++){
+       parts[i] = new Particle();
+       parts[0] = new OddballParticle();
+    }
   }
   
 }
@@ -41,7 +59,7 @@ class Particle
   void show()
   {
     fill(colr);
-    ellipse((float)x, (float)y, 10, 10);
+    ellipse((float)x, (float)y, 5, 5);
     
   }
 }
